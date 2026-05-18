@@ -4,7 +4,6 @@ const app = express();
 // SSR Static Asset Configuration
 const assetsPath = path.join(__dirname, "public");
 const PORT = 3000;
-
 app.use(express.static(assetsPath));
 
 // SSR View / View Ingine  Configuration
@@ -14,6 +13,14 @@ app.set("view engine", "ejs");
 // Parse Form Input Values and Return Variables With Names
 app.use(express.urlencoded({ extended: true }));
 
+const categoryRouter = require("./routes/categoryRouter.js");
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.use("/category", categoryRouter);
+
 // No Path Found Error Fallback
 app.use((req, res, next) => {
   res.status(404).render("");
@@ -21,6 +28,7 @@ app.use((req, res, next) => {
 
 // Errors forwarded by next(err)
 app.use((err, req, res, next) => {
+  console.error(err);
   res.status(500).render("");
 });
 
