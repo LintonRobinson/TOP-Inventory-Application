@@ -23,13 +23,13 @@ app.use("/category", categoryRouter);
 
 // No Path Found Error Fallback
 app.use((req, res, next) => {
-  res.status(404).render("");
+  res.status(404).render("errorPage");
 });
 
 // Errors forwarded by next(err)
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).render("");
+  res.status(500).render("errorPage");
 });
 
 app.listen(PORT, () => {

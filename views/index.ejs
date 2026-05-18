@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiraz Farm Inventory</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/shiraz-logo.png">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="nav-left">
+                <form action="/" method="POST">
+                    <button type="submit">
+                        <img src="/assets/shiraz-logo.png" alt="Shiraz Farm Logo">
+                    </button>
+                </form>
+                <h1>Shiraz Farm Inventory</h1>
+            </a>
+            <div class="nav-right">
+                <form method="GET">
+                    <select name="categories" id="categories">
+                        <option value="Default Category">Category: Default Category</option>
+                    </select>
+                </form>
+                <form method="GET" class="search-form">
+                    <button type="submit"></button>
+                    <input type="text" placeholder="Search For Item">
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="category-heading">
+            <div class="category-heading-text">
+                <div>
+                    <h2>(Category) Items</h2>
+                    <button>
+                        <span>Edit Category</span>
+                        <img src="/assets/pencil.png" alt="">
+                    </button>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas officia incidunt laboriosam pariatur
+                    ad.
+                    Modi minima porro!</p>
+            </div>
+            <div class="category-heading-buttons">
+                <a href="/item/new">Create New Item</a>
+                <a href="/category/new">Create New Category</a>
+            </div>
+        </section>
+        <section class="category-items">
+
+            <div class="item-detail-headings">
+                <span>Name</span>
+                <span>Price</span>
+                <span>Purchase URL</span>
+                <span>Category</span>
+                <span>Quantity</span>
+            </div>
+
+
+            <div class="item">
+                <button><img src="/assets/view.png" alt=""></button>
+                <span>Odo Ban</span>
+                <span>$9.99</span>
+                <span>www.ya</span>
+                <span>Cleaning</span>
+                <span>7</span>
+                <button><img src="/assets/edit.png" alt=""></button>
+            </div>
+            <!-- <div class="item">
+                <button><img src="/view.png" alt=""></button>
+                <span>Odo Ban</span>
+                <span>$9.99</span>
+                <span>www.yamamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com</span>
+                <span>Cleaning</span>
+                <span>7</span>
+                <button><img src="/edit.png" alt=""></button>
+            </div> -->
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

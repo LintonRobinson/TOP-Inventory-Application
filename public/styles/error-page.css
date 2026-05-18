@@ -1,0 +1,91 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/* In Development */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/******************************************
+/* 
+/*******************************************/
+
+/******************************************
+/* TYPOGRAPHY STYLES
+/*******************************************/
+
+* {
+  font-family: "Roboto";
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+textarea {
+  resize: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  justify-content: center;
+}
+
+.go-home-button {
+  text-decoration: none;
+  background-color: rgb(208, 173, 136);
+  border-radius: 9px;
+  border: none;
+  color: white;
+  padding: 10px;
+}
