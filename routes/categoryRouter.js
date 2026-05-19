@@ -11,7 +11,6 @@ categoryRouter.get("/new", (req, res) => {
 categoryRouter.get("/edit/:id", async (req, res) => {
   const categoryId = req.params.id;
   const category = await db.getCategory(categoryId);
-  console.log("category", category);
   res.render("editCategory", { category: category });
 });
 
