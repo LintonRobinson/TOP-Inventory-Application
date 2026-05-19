@@ -22,9 +22,13 @@
                 <h1>Shiraz Farm Inventory</h1>
             </div>
             <div class="nav-right">
-                <form method="GET">
-                    <select name="categories" id="categories">
-                        <option value="Default Category">Category: Default Category</option>
+                <form method="GET" action="/">
+                    <select onchange="this.form.submit()" name="categories" id="categories">
+                        <% categories.forEach((category)=> { %>
+                            <option value="<%=category.name%>">
+                                <%=category.name%>
+                            </option>
+                            <%}) %>
                     </select>
                 </form>
                 <form method="GET" class="search-form">
@@ -38,21 +42,26 @@
         <section class="category-heading">
             <div class="category-heading-text">
                 <div>
-                    <h2>(Category) Items</h2>
+                    <h2>
+                        <%=title%>
+                    </h2>
                     <div>
-                        <a href="/category/edit/<%=categoryId%>">
-                            <span>Edit Category</span>
-                            <img src="/assets/pencil.png" alt="">
-                        </a>
-                        <a href="/category/edit/<%=categoryId%>">
-                            <span>Delete Category</span>
-                            <img src="/assets/trash-can.png" alt="">
-                        </a>
+                        <% if(title !=="All Items" ) { %>
+                            <a href="/category/edit/<%=categoryId%>">
+                                <span>Edit Category</span>
+                                <img src="/assets/pencil.png" alt="">
+                            </a>
+                            <a href="/category/edit/<%=categoryId%>">
+                                <span>Delete Category</span>
+                                <img src="/assets/trash-can.png" alt="">
+                            </a>
+
+                            <% }; %>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas officia incidunt laboriosam pariatur
-                    ad.
-                    Modi minima porro!</p>
+                <p>
+                    <%=description%>
+                </p>
             </div>
             <div class="category-heading-buttons">
                 <a href="/item/new">Create New Item</a>

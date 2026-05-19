@@ -15,8 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const categoryRouter = require("./routes/categoryRouter.js");
 
-app.get("/", (req, res) => {
-  res.render("index", { categoryId: "1" });
+const db = require("./db/queries.js");
+app.get("/", async (req, res) => {
+  const categories = await db.getCategories();
+
+  res.render("index", { title: "All Itemss", description: "All Shiraz Farm items.", categories: categories, categoryId: "1" });
 });
 
 app.use("/category", categoryRouter);
