@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 const categoryRouter = require("./routes/categoryRouter.js");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { categoryId: "1" });
 });
 
 app.use("/category", categoryRouter);
