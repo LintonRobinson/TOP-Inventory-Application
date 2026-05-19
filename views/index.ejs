@@ -17,14 +17,10 @@
 <body>
     <header>
         <nav>
-            <a class="nav-left">
-                <form action="/" method="POST">
-                    <button type="submit">
-                        <img src="/assets/shiraz-logo.png" alt="Shiraz Farm Logo">
-                    </button>
-                </form>
+            <div class="nav-left">
+                <img src="/assets/shiraz-logo.png" alt="Shiraz Farm Logo">
                 <h1>Shiraz Farm Inventory</h1>
-            </a>
+            </div>
             <div class="nav-right">
                 <form method="GET">
                     <select name="categories" id="categories">
@@ -43,10 +39,16 @@
             <div class="category-heading-text">
                 <div>
                     <h2>(Category) Items</h2>
-                    <button>
-                        <span>Edit Category</span>
-                        <img src="/assets/pencil.png" alt="">
-                    </button>
+                    <div>
+                        <a href="/category/edit/<%=categoryId%>">
+                            <span>Edit Category</span>
+                            <img src="/assets/pencil.png" alt="">
+                        </a>
+                        <a href="/category/edit/<%=categoryId%>">
+                            <span>Delete Category</span>
+                            <img src="/assets/trash-can.png" alt="">
+                        </a>
+                    </div>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas officia incidunt laboriosam pariatur
                     ad.
