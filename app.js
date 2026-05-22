@@ -18,8 +18,8 @@ const categoryRouter = require("./routes/categoryRouter.js");
 const db = require("./db/queries.js");
 app.get("/", async (req, res) => {
   const categories = await db.getCategories();
-
-  res.render("index", { title: "All Itemss", description: "All Shiraz Farm items.", categories: categories, categoryId: "1" });
+  const items = await db.getItems();
+  res.render("index", { title: "All Itemss", description: "All Shiraz Farm items.", categories: categories, categoryId: "1", items: items });
 });
 
 app.use("/category", categoryRouter);
