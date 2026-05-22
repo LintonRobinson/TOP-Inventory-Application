@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const categoryController = require("../controllers/categoryController.js");
+const itemRouter = require("../routes/itemRouter.js");
 const db = require("../db/queries.js");
 
 const categoryRouter = Router();
@@ -14,8 +15,10 @@ categoryRouter.get("/edit/:id", async (req, res) => {
   res.render("editCategory", { category: category });
 });
 
-categoryRouter.post("/edit/:id", categoryController.validateCategory, categoryController.updateCategory);
+categoryRouter.post("/edit/:categoryId", categoryController.validateCategory, categoryController.updateCategory);
 
 categoryRouter.post("/new", categoryController.validateCategory, categoryController.insertCategory);
+
+categoryRouter.use("/:categoryId/item", itemRouter);
 
 module.exports = categoryRouter;
