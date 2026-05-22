@@ -64,7 +64,7 @@
                 </p>
             </div>
             <div class="category-heading-buttons">
-                <a href="/item/new">Create New Item</a>
+                <a href="/category/<%=categoryId%>/item/new">Create New Item</a>
                 <a href="/category/new">Create New Category</a>
             </div>
         </section>
@@ -77,18 +77,7 @@
                 <span>Category</span>
                 <span>Quantity</span>
             </div>
-
-
-            <div class="item">
-                <button><img src="/assets/view.png" alt=""></button>
-                <span>Odo Ban</span>
-                <span>$9.99</span>
-                <span>www.ya</span>
-                <span>Cleaning</span>
-                <span>7</span>
-                <button><img src="/assets/edit.png" alt=""></button>
-            </div>
-            <!-- <div class="item">
+            <%- include("partials/categoryItems") %> <!-- <div class="item">
                 <button><img src="/view.png" alt=""></button>
                 <span>Odo Ban</span>
                 <span>$9.99</span>
@@ -96,9 +85,9 @@
                 <span>Cleaning</span>
                 <span>7</span>
                 <button><img src="/edit.png" alt=""></button>
-            </div> -->
+                </div> -->
 
-            </div>
+                </div>
         </section>
     </main>
 </body>
