@@ -19,7 +19,7 @@ async function updateCategory(req, res) {
   if (!errors.isEmpty()) {
     return res.render("createCategory", { errors: errors.array() });
   }
-  const categoryId = req.params.id;
+  const categoryId = req.params.categoryId;
   const categoryName = req.body.categoryName;
   const categoryDescription = req.body.categoryDescription;
   db.updateCategory(categoryId, categoryName, categoryDescription);
