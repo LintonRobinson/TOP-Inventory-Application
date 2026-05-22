@@ -278,6 +278,7 @@ main section:nth-child(2) {
   flex-grow: 1;
   border: 1px solid #b2672567;
   overflow-y: scroll;
+  position: relative;
 }
 
 .item-detail-headings {
@@ -291,6 +292,8 @@ main section:nth-child(2) {
   grid-template-columns: subgrid;
   justify-items: center;
   text-decoration: underline;
+  position: sticky;
+  top: 0;
 }
 
 .item-detail-headings span {
@@ -308,7 +311,7 @@ main section:nth-child(2) {
   justify-items: center;
 }
 
-.item button {
+.item a {
   width: 20px;
   background: none;
   border: none;
@@ -317,11 +320,11 @@ main section:nth-child(2) {
   transform: scale(1);
 }
 
-.item button:nth-child(1) {
+.item a:nth-child(1) {
   justify-self: end;
 }
 
-.item button:hover {
+.item a:hover {
   transition: 0.5s ease;
   transform: scale(1.1);
 }
