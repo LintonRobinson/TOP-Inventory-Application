@@ -23,43 +23,44 @@
             </div>
             <div class="nav-right">
                 <%if(categories.length> 0) {%>
-                    <% if(items.length> 0 ) { %>
 
 
-                        <% if(title==="All Items" ) { %>
-                            <form method="GET" action="/">
-                                <select onchange="this.form.submit()" name="categories" id="categories">
-                                    <option value="">
-                                        All Items
+
+                    <% if(title==="All Items" ) { %>
+                        <form method="GET" action="/category/<%=categoryId%>">
+                            <select onchange="this.form.submit()" name="categoryToView" id="categoryToView">
+                                <option value="">
+                                    All Items
+                                </option>
+                                <% categories.forEach((category)=> { %>
+                                    <option value="<%=category.id%>">
+                                        <%=category.name%>
                                     </option>
+                                    <%}) %>
+                            </select>
+                        </form>
+                        <% } else { %>
+                            <form method="GET" action="/category/<%=categoryId%>">
+                                <select onchange="this.form.submit()" name="categoryToView" id="categoryToView">
                                     <% categories.forEach((category)=> { %>
-                                        <option value="<%=category.name%>">
+                                        <option value="<%=category.id%>" <%=category.id==categoryId ? 'selected' : '' %>
+                                            >
                                             <%=category.name%>
                                         </option>
                                         <%}) %>
                                 </select>
                             </form>
-                            <% } else { %>
-                                <form method="GET" action="/">
-                                    <select onchange="this.form.submit()" name="categories" id="categories">
-                                        <% categories.forEach((category)=> { %>
-                                            <option value="<%=category.name%>">
-                                                <%=category.name%>
-                                            </option>
-                                            <%}) %>
-                                    </select>
-                                </form>
-                                <% }; %>
-                                    <% }; %>
+                            <% }; %>
 
-                                        <%};%>
 
-                                            <%if(items.length> 0) {%>
-                                                <form method="GET" class="search-form">
-                                                    <button type="submit"></button>
-                                                    <input type="text" placeholder="Search For Item">
-                                                </form>
-                                                <%};%>
+                                <%};%>
+
+
+                                    <form method="GET" class="search-form">
+                                        <button type="submit"></button>
+                                        <input type="text" placeholder="Search For Item">
+                                    </form>
+
 
             </div>
         </nav>
@@ -81,13 +82,14 @@
                                 <span>Delete Category</span>
                                 <img src="/assets/trash-can.png" alt="">
                             </a>
-
+                            <a href="/">View All Items</a>
                             <% }; %>
                     </div>
                 </div>
                 <p>
                     <%=description%>
                 </p>
+
             </div>
             <div class="category-heading-buttons">
                 <%if(categories.length> 0) {%>
@@ -102,7 +104,7 @@
             <div class="item-detail-headings">
                 <span>Name</span>
                 <span>Price</span>
-                <span>Purchase URL</span>
+                <span>URL</span>
                 <span>Category</span>
                 <span>Quantity</span>
             </div>
