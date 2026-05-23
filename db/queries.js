@@ -18,6 +18,12 @@ async function updateCategory(categoryId, categoryName, categoryDescription) {
   await pool.query("UPDATE categories SET name = $2, description = $3 WHERE id = $1", [categoryId, categoryName, categoryDescription]);
 }
 
+async function getCategoryItems(categoryId) {
+  console.log("categoryId", categoryId);
+  const { rows } = await pool.query("SELECT * FROM items WHERE category = $1", [categoryId]);
+  return rows;
+}
+
 async function getItems() {
   const { rows } = await pool.query("SELECT * FROM items");
   return rows;
@@ -41,5 +47,6 @@ module.exports = {
   getCategories,
   getCategory,
   getItems,
+  getCategoryItems,
   insertItem,
 };
