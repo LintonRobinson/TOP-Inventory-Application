@@ -1,17 +1,35 @@
-<% items.forEach((item)=> {%>
-    <div class="item">
-        <a><img src="/assets/view.png" alt=""></a>
-        <span>
-            <%=item.name%>
-        </span>
-        <span>
-            <%=item.price%>
-        </span>
-        <span>www.ya</span>
-        <span>Cleaning</span>
-        <span>7</span>
-        <a>
-            <img src="/assets/edit.png" alt="">
-        </a>
-    </div>
-    <%})%>
+<% if(items.length> 0) { %>
+    <% items.forEach(function(item) { %>
+        <div class="item">
+            <a><img src="/assets/view.png" alt=""></a>
+            <span>
+                <%=item.name%>
+            </span>
+            <span>
+                <%=item.price%>
+            </span>
+            <span>
+                <%=item.url%>
+            </span>
+            <span>
+                <%=item.category%>
+            </span>
+            <span>
+                <%=item.quantity%>
+            </span>
+            <a><img src="/assets/edit.png" alt=""></a>
+        </div>
+        <% }) %>
+            <% } else { %>
+                <% if(categories.length> 0) { %>
+                    <div class="no-items">
+                        <h1>No items found!</h1>
+                        <a href="/category/<%=categoryId%>/item/new">Add your first item!</a>
+                    </div>
+                    <% } else { %>
+                        <div class="no-items">
+                            <h1>No items found!</h1>
+                            <a href="/category/new">Create a category</a>
+                        </div>
+                        <% } %>
+                            <% } %>
