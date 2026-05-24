@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Item</title>
+    <link rel="stylesheet" href="/styles/create-item.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/shiraz-logo.png">
+</head>
+
+<body>
+    <main>
+        <div class="form-heading-wrapper">
+            <a href="/" class="back-button">
+                <img src="/assets/back.png" alt="Back Arrow Icon">
+                <span>Go Back</span>
+            </a>
+            <h1>View Item</h1>
+        </div>
+        <form action="/category/<%=itemCategory%>/item/new" method="POST">
+            <div class="form-field">
+                <label for="itemName">Name:</label>
+                <input type="text" id="itemName" name="itemName" placeholder="Item Name" required>
+            </div>
+            <div class="form-field">
+                <label for="itemDescription">Description:</label>
+                <textarea type="text" id="itemDescription" name="itemDescription" placeholder="Item Description"
+                    required></textarea>
+            </div>
+            <div class="form-field">
+                <label for="itemCategory">Item Category</label>
+                <select id="itemCategory" name="itemCategory">
+                    <% categories.forEach((category)=> { %>
+                        <% if (itemCategory===category.id.toString()) { %>
+                            <option value="<%=category.id%>" selected>
+                                <%=category.name%>
+                            </option>
+                            <% } else { %>
+                                <option value="<%=category.id%>">
+                                    <%=category.name%>
+                                </option>
+                                <%} %>
+                                    <%}) %>
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="itemUrl">URL:</label>
+                <input type="url" id="itemUrl" name="itemUrl" placeholder="Item URL" required>
+            </div>
+            <div class="form-field">
+                <label for="itemPrice">Price:</label>
+                <input type="text" id="itemPrice" name="itemPrice" placeholder="Item Price" required>
+            </div>
+            <div class="form-field">
+                <label for="itemQuantity">Quantity:</label>
+                <input type="number" id="itemQuantity" name="itemQuantity" placeholder="Item Quantity" required>
+            </div>
+            <div class="form-field">
+                <label for="itemNotes">Notes:</label>
+                <textarea type="text" id="itemNotes" name="itemNotes" placeholder="Item Notes" required></textarea>
+            </div>
+            <div class="form-button-wrapper">
+                <button class="submit-button" type="submit">Create Item</button>
+            </div>
+        </form>
+        <%- include("partials/errors") %>
+    </main>
+</body>
+
+</html>

@@ -1,18 +1,20 @@
 <% if(items.length> 0) { %>
     <% items.forEach(function(item) { %>
         <div class="item">
-            <a><img src="/assets/view.png" alt=""></a>
+            <a href="/category/<%=item.category%>/item/view/<%=item.id%>">
+                <img src="/assets/view.png" alt="">
+            </a>
             <span>
                 <%=item.name%>
             </span>
             <span>
-                <%=item.price%>
+                $<%=item.price%>
             </span>
             <span class="url">
                 <%=item.url%>
             </span>
             <span>
-                <%=item.category%>
+                <%=item.category_name%>
             </span>
             <span>
                 <%=item.quantity%>

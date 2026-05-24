@@ -14,6 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 const categoryRouter = require("./routes/categoryRouter.js");
+const itemRouter = require("./routes/itemRouter.js");
 
 const db = require("./db/queries.js");
 app.get("/", async (req, res) => {
@@ -23,6 +24,11 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/category", categoryRouter);
+app.use("/item", itemRouter);
+
+app.use("/back", (req, res) => {
+  res.redirect("back");
+});
 
 // No Path Found Error Fallback
 app.use((req, res, next) => {

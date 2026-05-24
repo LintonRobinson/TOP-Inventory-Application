@@ -20,7 +20,6 @@ categoryRouter.get("/view", async (req, res) => {
   const category = await db.getCategory(categoryId);
   const categories = await db.getCategories();
   const items = await db.getCategoryItems(categoryId);
-  console.log("items", items);
   res.render("index", { title: category.name, description: category.description, categories: categories, categoryId: categoryId, items: items });
 });
 

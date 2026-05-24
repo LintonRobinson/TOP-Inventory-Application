@@ -11,4 +11,13 @@ itemRouter.get("/new", async (req, res) => {
 
 itemRouter.post("/new", itemController.validateItem, itemController.insertItem);
 
+itemRouter.get("/view/:id", async (req, res) => {
+  const categories = await db.getCategories();
+  const itemId = req.params.id;
+  const item = await db.getItem(itemId);
+  const itemCategory = req.params.categoryId;
+  console.log("itemCategoryyyyyy", req.params);
+  res.render("viewItem", { categories: categories, itemCategory: itemCategory, item: item });
+});
+
 module.exports = itemRouter;
