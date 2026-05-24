@@ -15,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const categoryRouter = require("./routes/categoryRouter.js");
 const itemRouter = require("./routes/itemRouter.js");
-
 const db = require("./db/queries.js");
+
 app.get("/", async (req, res) => {
   const categories = await db.getCategories();
   const items = await db.getItems();

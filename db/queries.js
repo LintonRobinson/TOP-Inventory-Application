@@ -25,7 +25,7 @@ async function getCategoryItems(categoryId) {
 }
 
 async function getItems() {
-  const { rows } = await pool.query("SELECT items.*, categories.name AS category_name FROM items INNER JOIN categories ON category = categories.id");
+  const { rows } = await pool.query("SELECT items.*, categories.name AS category_name FROM items INNER JOIN categories ON items.category = categories.id ORDER BY items.id ASC");
   return rows;
 }
 
@@ -46,6 +46,19 @@ async function insertItem(categoryId, validatedItem) {
   ]);
 }
 
+async function updateItem(itemId, validatedItem) {
+  await pool.query("UPDATE items SET name = $2, description = $3, category = $4, url = $5, price = $6, quantity = $7, notes = $8 WHERE id = $1", [
+    itemId,
+    validatedItem.itemName,
+    validatedItem.itemDescription,
+    validatedItem.itemCategory,
+    validatedItem.itemUrl,
+    validatedItem.itemPrice,
+    validatedItem.itemQuantity,
+    validatedItem.itemNotes,
+  ]);
+}
+
 module.exports = {
   insertCategory,
   updateCategory,
@@ -55,4 +68,5 @@ module.exports = {
   getItem,
   getCategoryItems,
   insertItem,
+  updateItem,
 };

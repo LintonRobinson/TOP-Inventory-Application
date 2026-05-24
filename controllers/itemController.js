@@ -21,12 +21,30 @@ async function insertItem(req, res) {
 
   const validatedItem = matchedData(req);
 
-  console.log("validatedItemmm", validatedItem);
   await db.insertItem(itemCategory, validatedItem);
   res.redirect("/");
+}
+
+async function updateItem(req, res) {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const categories = await db.getCategories();
+    const itemId = req.params.id;
+    const item = await db.getItem(itemId);
+    const itemCategory = req.params.categoryId;
+    return res.render("editItem", { categories: categories, itemCategory: itemCategory, item: item, errors: errors.array() });
+  }
+  const itemId = req.params.id;
+  const validatedItem = matchedData(req);
+  await db.updateItem(itemId, validatedItem);
+  const categories = await db.getCategories();
+  const items = await db.getItems();
+  res.render("index", { title: "All Items", description: "All Shiraz Farm items.", categories: categories, categoryId: "view", items: items });
 }
 
 module.exports = {
   validateItem,
   insertItem,
+  updateItem,
 };

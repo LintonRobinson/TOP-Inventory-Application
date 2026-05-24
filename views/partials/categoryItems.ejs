@@ -19,7 +19,9 @@
             <span>
                 <%=item.quantity%>
             </span>
-            <a><img src="/assets/edit.png" alt=""></a>
+            <a href="/category/<%=item.category%>/item/edit/<%=item.id%>">
+                <img src="/assets/edit.png" alt="">
+            </a>
         </div>
         <% }) %>
             <% } else { %>
