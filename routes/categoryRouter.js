@@ -15,6 +15,8 @@ categoryRouter.get("/edit/:id", async (req, res) => {
   res.render("editCategory", { category: category });
 });
 
+categoryRouter.delete("/delete/:id", categoryController.deleteCategory);
+
 categoryRouter.get("/view", async (req, res) => {
   const categoryId = req.query.categoryToView;
   const category = await db.getCategory(categoryId);

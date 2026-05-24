@@ -10,6 +10,11 @@ async function getCategory(categoryId) {
   return rows[0];
 }
 
+async function deleteCategory(categoryId) {
+  await pool.query("DELETE FROM items WHERE category = $1", [categoryId]);
+  await pool.query("DELETE FROM categories WHERE id = $1", [categoryId]);
+}
+
 async function insertCategory(validatedCategory) {
   await pool.query("INSERT INTO categories (name, description) VALUES ($1,$2)", [validatedCategory.categoryName, validatedCategory.categoryDescription]);
 }
@@ -62,6 +67,7 @@ async function updateItem(itemId, validatedItem) {
 module.exports = {
   insertCategory,
   updateCategory,
+  deleteCategory,
   getCategories,
   getCategory,
   getItems,

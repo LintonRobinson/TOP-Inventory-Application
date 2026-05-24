@@ -1,3 +1,4 @@
+const pool = require("../db/pool.js");
 const db = require("../db/queries.js");
 const { body, validationResult, matchedData } = require("express-validator");
 const validateCategory = [
@@ -22,12 +23,21 @@ async function updateCategory(req, res) {
   const categoryId = req.params.categoryId;
   const categoryName = req.body.categoryName;
   const categoryDescription = req.body.categoryDescription;
-  db.updateCategory(categoryId, categoryName, categoryDescription);
+  await db.updateCategory(categoryId, categoryName, categoryDescription);
   res.redirect("/");
+}
+
+async function deleteCategory(req, res) {
+  const categoryId = req.params.id;
+  await db.deleteCategory(categoryId);
+  const categories = await db.getCategories();
+  const items = await db.getItems();
+  res.render("index", { title: "All Items", description: "All Shiraz Farm items.", categories: categories, categoryId: "view", items: items });
 }
 
 module.exports = {
   validateCategory,
   insertCategory,
   updateCategory,
+  deleteCategory,
 };

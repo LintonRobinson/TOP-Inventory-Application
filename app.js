@@ -13,6 +13,10 @@ app.set("view engine", "ejs");
 // Parse Form Input Values and Return Variables With Names
 app.use(express.urlencoded({ extended: true }));
 
+// Override HTML form methods
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
 const categoryRouter = require("./routes/categoryRouter.js");
 const itemRouter = require("./routes/itemRouter.js");
 const db = require("./db/queries.js");

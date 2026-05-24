@@ -23,9 +23,6 @@
             </div>
             <div class="nav-right">
                 <%if(categories.length> 0) {%>
-
-
-
                     <% if(title==="All Items" ) { %>
                         <form method="GET" action="/category/view">
                             <select onchange="this.form.submit()" name="categoryToView" id="categoryToView">
@@ -78,10 +75,12 @@
                                 <span>Edit Category</span>
                                 <img src="/assets/pencil.png" alt="">
                             </a>
-                            <a href="/category/edit/<%=categoryId%>">
-                                <span>Delete Category</span>
-                                <img src="/assets/trash-can.png" alt="">
-                            </a>
+                            <form action="/category/delete/<%=categoryId%>?_method=DELETE" method="POST">
+                                <button type="submit">
+                                    <span>Delete Category</span>
+                                    <img src="/assets/trash-can.png" alt="">
+                                </button>
+                            </form>
                             <a href="/">View All Items</a>
                             <% }; %>
                     </div>
