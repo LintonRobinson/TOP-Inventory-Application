@@ -27,7 +27,7 @@
 
 
                     <% if(title==="All Items" ) { %>
-                        <form method="GET" action="/category/<%=categoryId%>">
+                        <form method="GET" action="/category/view">
                             <select onchange="this.form.submit()" name="categoryToView" id="categoryToView">
                                 <option value="">
                                     All Items
@@ -40,7 +40,7 @@
                             </select>
                         </form>
                         <% } else { %>
-                            <form method="GET" action="/category/<%=categoryId%>">
+                            <form method="GET" action="/category/view">
                                 <select onchange="this.form.submit()" name="categoryToView" id="categoryToView">
                                     <% categories.forEach((category)=> { %>
                                         <option value="<%=category.id%>" <%=category.id==categoryId ? 'selected' : '' %>

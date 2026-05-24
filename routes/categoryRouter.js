@@ -15,12 +15,13 @@ categoryRouter.get("/edit/:id", async (req, res) => {
   res.render("editCategory", { category: category });
 });
 
-categoryRouter.get("/:id", async (req, res) => {
+categoryRouter.get("/view", async (req, res) => {
   const categoryId = req.query.categoryToView;
+  const category = await db.getCategory(categoryId);
   const categories = await db.getCategories();
   const items = await db.getCategoryItems(categoryId);
   console.log("items", items);
-  res.render("index", { title: "A different Cat", description: "All Shiraz Farm items.", categories: categories, categoryId: categoryId, items: items });
+  res.render("index", { title: category.name, description: category.description, categories: categories, categoryId: categoryId, items: items });
 });
 
 categoryRouter.post("/edit/:categoryId", categoryController.validateCategory, categoryController.updateCategory);
