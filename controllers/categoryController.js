@@ -5,6 +5,16 @@ const validateCategory = [
   body("categoryName").trim().notEmpty().withMessage("Category name cannot be empty or contain numbers"),
   body("categoryDescription").trim().notEmpty().withMessage("Category description cannot be empty"),
 ];
+
+const validatedAdminPassword = body("password").custom((value) => {
+  console.log("validating", process.env.ADMIN_PASSWORD);
+
+  if (value !== process.env.ADMIN_PASSWORD) {
+    throw Error("Invalid Password.");
+  }
+  return true;
+});
+
 async function insertCategory(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -28,6 +38,15 @@ async function updateCategory(req, res) {
 }
 
 async function deleteCategory(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const categoryId = req.params.id;
+    console.log("categoryId", categoryId);
+    const category = await db.getCategory(categoryId);
+    return res.render("editCategory", { category: category, errors: errors.array(), categoryId: categoryId });
+  }
+
+  console.log("should not run");
   const categoryId = req.params.id;
   await db.deleteCategory(categoryId);
   const categories = await db.getCategories();
@@ -37,6 +56,7 @@ async function deleteCategory(req, res) {
 
 module.exports = {
   validateCategory,
+  validatedAdminPassword,
   insertCategory,
   updateCategory,
   deleteCategory,

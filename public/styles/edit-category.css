@@ -47,11 +47,19 @@ button {
 
 h1 {
   font-size: 1.6rem;
+  white-space: nowrap;
 }
 
 /******************************************
 /* BASE STYLES
 /*******************************************/
+a {
+  white-space: nowrap;
+}
+
+span {
+  display: inline-block;
+}
 
 li {
   list-style: none;
@@ -66,6 +74,9 @@ input:focus {
 
 textarea {
   resize: none;
+}
+
+button {
 }
 
 button:hover {
@@ -131,7 +142,15 @@ form {
 .form-heading-wrapper {
   padding-bottom: 20px;
   border-bottom: solid 1px #aaaaaa60;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-heading-wrapper > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .form-heading-wrapper form {
@@ -155,6 +174,10 @@ textarea {
   border: solid 1.3px #848484db;
 }
 
+.form-field:last-child {
+  padding-bottom: 20px;
+}
+
 .form-button-wrapper {
   border-top: solid 1px #aaaaaa60;
   padding-top: 20px;
@@ -163,14 +186,14 @@ textarea {
 }
 
 .back-button {
+  display: inline-block;
   display: flex;
   align-items: center;
+
   gap: 10px;
   color: #ff4f4f;
   transition: 0.5s ease;
   opacity: 1;
-  position: absolute;
-  left: 20px;
   text-decoration: none;
 }
 
@@ -215,4 +238,59 @@ textarea {
   transition: 0.5s ease;
   opacity: 0.7;
   cursor: pointer;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none; /* Safari/Chrome */
+  -moz-appearance: none; /* Firefox */
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+select {
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 9px;
+  padding: 10px;
+  background-image: url("/assets/down-arrow.png");
+  background-repeat: no-repeat;
+  background-position: right 0.65rem top 50%;
+  background-size: 0.9rem auto;
+  padding-right: 2rem;
+  font-size: 1rem;
+  height: 100%;
+}
+
+.delete-item {
+  padding-top: 0;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.delete-item label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 700;
+}
+
+.delete-item-button {
+  background-color: #ff7b7b;
+  justify-self: center;
+  border-radius: 9px;
+  padding: 10px;
+  color: white;
+  align-self: flex-end;
 }

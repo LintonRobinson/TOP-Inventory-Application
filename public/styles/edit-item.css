@@ -131,7 +131,14 @@ form {
 .form-heading-wrapper {
   padding-bottom: 20px;
   border-bottom: solid 1px #aaaaaa60;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-heading-wrapper > div:nth-child(1) {
+  display: flex;
+  gap: 15px;
 }
 
 .form-heading-wrapper form {
@@ -173,8 +180,7 @@ textarea {
   color: #ff4f4f;
   transition: 0.5s ease;
   opacity: 1;
-  position: absolute;
-  left: 20px;
+
   text-decoration: none;
 }
 
@@ -254,8 +260,17 @@ select {
   padding-top: 0;
   padding-bottom: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
   align-items: center;
+}
+
+.delete-item label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 700;
 }
 
 .delete-item-button {
@@ -264,4 +279,5 @@ select {
   border-radius: 9px;
   padding: 10px;
   color: white;
+  align-self: flex-end;
 }
