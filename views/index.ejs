@@ -53,9 +53,9 @@
                                 <%};%>
 
 
-                                    <form method="GET" class="search-form">
+                                    <form method="GET" action="/item/search" class="search-form">
                                         <button type="submit"></button>
-                                        <input type="text" placeholder="Search For Item">
+                                        <input type="text" placeholder="Search For Item" name="text">
                                     </form>
 
 
@@ -70,7 +70,7 @@
                         <%=title%>
                     </h2>
                     <div>
-                        <% if(title !=="All Items" ) { %>
+                        <% if(title !=="All Items" && title !=="Search Result" ) { %>
                             <a href="/category/edit/<%=categoryId%>">
                                 <span>Edit Category</span>
                                 <img src="/assets/pencil.png" alt="">
@@ -83,6 +83,9 @@
                             </form>
                             <a href="/">View All Items</a>
                             <% }; %>
+                                <% if(title==="Search Result" ) { %>
+                                    <a href="/">View All Items</a>
+                                    <% }; %>
                     </div>
                 </div>
                 <p>

@@ -336,6 +336,8 @@ main section:nth-child(2) {
   cursor: pointer;
   transition: 0.5s ease;
   transform: scale(1);
+  color: black;
+  text-decoration: none;
 }
 
 .item a:nth-child(1) {
@@ -345,6 +347,11 @@ main section:nth-child(2) {
 .item a:hover {
   transition: 0.5s ease;
   transform: scale(1.1);
+}
+
+.item .url:hover {
+  transition: 0.5s ease;
+  transform: scale(1);
 }
 
 .item span {

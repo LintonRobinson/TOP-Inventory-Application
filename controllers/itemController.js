@@ -43,8 +43,26 @@ async function updateItem(req, res) {
   res.render("index", { title: "All Items", description: "All Shiraz Farm items.", categories: categories, categoryId: "view", items: items });
 }
 
+async function deleteItem(req, res) {
+  const itemId = req.params.id;
+  await db.deleteItem(itemId);
+  const categories = await db.getCategories();
+  const items = await db.getItems();
+  res.render("index", { title: "All Items", description: "All Shiraz Farm items.", categories: categories, categoryId: "view", items: items });
+}
+
+async function getItemsByText(req, res) {
+  const { text } = req.query;
+  const categories = await db.getCategories();
+  const items = await db.getItemsByText(text);
+  console.log("items", items);
+  res.render("index", { title: "Search Result", description: `Search Result for '${text}'`, categories: categories, categoryId: "view", items: items });
+}
+
 module.exports = {
   validateItem,
   insertItem,
   updateItem,
+  deleteItem,
+  getItemsByText,
 };

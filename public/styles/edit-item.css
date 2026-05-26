@@ -1,0 +1,267 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/* In Development */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/******************************************
+/* 
+/*******************************************/
+
+/******************************************
+/* TYPOGRAPHY STYLES
+/*******************************************/
+
+* {
+  font-family: "Roboto";
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+li {
+  list-style: none;
+  text-align: center;
+  color: red;
+  font-style: italic;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+body {
+  height: 100vh;
+  background-color: #ecf2f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/Shiraz-Farm-Background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  margin: 0px;
+  padding: 0 20px;
+}
+
+body::after {
+  height: 100vh;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.348);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+}
+
+main {
+  position: relative;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  padding-top: 40px;
+  border-radius: 9px;
+  border: 1.5px solid #b267258f;
+  flex-grow: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.form-heading-wrapper,
+.form-button-wrapper {
+  display: flex;
+}
+
+.form-heading-wrapper {
+  padding-bottom: 20px;
+  border-bottom: solid 1px #aaaaaa60;
+  justify-content: center;
+}
+
+.form-heading-wrapper form {
+  padding: 0;
+}
+
+.cancel-button {
+  width: 30px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border-radius: 9px;
+  border: solid 1.3px #848484db;
+}
+
+.form-field:last-child {
+  padding-bottom: 20px;
+}
+
+.form-button-wrapper {
+  border-top: solid 1px #aaaaaa60;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff4f4f;
+  transition: 0.5s ease;
+  opacity: 1;
+  position: absolute;
+  left: 20px;
+  text-decoration: none;
+}
+
+@media (max-width: 500px) {
+  .back-button {
+    position: relative;
+    left: 0;
+  }
+
+  .form-heading-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+.back-button:hover {
+  transition: 0.5s ease;
+  opacity: 0.5;
+}
+
+.back-button img {
+  width: 25px;
+}
+
+.submit-button {
+  padding: 10px;
+  border: none;
+  border-radius: 9px;
+  background-color: #b26725;
+  color: rgb(255, 255, 255);
+  transition: 0.5s ease;
+  opacity: 1;
+}
+
+.submit-button:hover {
+  padding: 10px;
+  border: none;
+  border-radius: 9px;
+  background-color: #b26725;
+  color: rgb(244, 244, 244);
+  transition: 0.5s ease;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none; /* Safari/Chrome */
+  -moz-appearance: none; /* Firefox */
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+select {
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 9px;
+  padding: 10px;
+  background-image: url("/assets/down-arrow.png");
+  background-repeat: no-repeat;
+  background-position: right 0.65rem top 50%;
+  background-size: 0.9rem auto;
+  padding-right: 2rem;
+  font-size: 1rem;
+  height: 100%;
+}
+
+.delete-item {
+  padding-top: 0;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-item-button {
+  background-color: #ff7b7b;
+  justify-self: center;
+  border-radius: 9px;
+  padding: 10px;
+  color: white;
+}

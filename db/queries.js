@@ -64,6 +64,16 @@ async function updateItem(itemId, validatedItem) {
   ]);
 }
 
+async function deleteItem(itemId) {
+  await pool.query("DELETE FROM items WHERE id = $1", [itemId]);
+}
+
+async function getItemsByText(text) {
+  const { rows } = await pool.query("SELECT items.*, categories.name AS category_name FROM items INNER JOIN categories ON items.category = categories.id  WHERE items.name ILIKE $1", [`%${text}%`]);
+  console.log("rows", rows);
+  return rows;
+}
+
 module.exports = {
   insertCategory,
   updateCategory,
@@ -72,7 +82,9 @@ module.exports = {
   getCategory,
   getItems,
   getItem,
+  getItemsByText,
   getCategoryItems,
   insertItem,
   updateItem,
+  deleteItem,
 };

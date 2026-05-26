@@ -28,4 +28,8 @@ itemRouter.get("/edit/:id", async (req, res) => {
 
 itemRouter.post("/edit/:id", itemController.validateItem, itemController.updateItem);
 
+itemRouter.delete("/delete/:id", itemController.deleteItem);
+
+itemRouter.get("/search", itemController.getItemsByText);
+
 module.exports = itemRouter;
