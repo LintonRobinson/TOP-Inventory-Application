@@ -6,9 +6,16 @@ const validateItem = [
   body("itemCategory").trim().notEmpty().withMessage("Please select a valid category"),
   body("itemUrl").trim().notEmpty().isURL().withMessage("Item url is required and must be a valid url"),
   body("itemPrice").trim().notEmpty().isNumeric().withMessage("Item price is required and must be a number"),
-  body("itemQuantity").trim().notEmpty().isNumeric().withMessage("Item quantity is required and must be a number"),
+  body("itemQuantity").trim().notEmpty().isInt({ min: 0 }).withMessage("Item quantity is required and must be a number and must be greater than 0"),
   body("itemNotes").trim(),
 ];
+
+const validateAdminPassword = body("password").custom((value) => {
+  if (value !== process.env.ADMIN_PASSWORD) {
+    throw Error("Invalid Password.");
+  }
+  return true;
+});
 
 async function insertItem(req, res) {
   const errors = validationResult(req);
@@ -44,11 +51,21 @@ async function updateItem(req, res) {
 }
 
 async function deleteItem(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const itemId = req.params.id;
+    const item = await db.getItem(itemId);
+    const itemCategory = req.params.id;
+    const category = await db.getCategory(itemCategory);
+    const categories = await db.getCategories();
+    return res.render("editItem", { categories: categories, category: category, errors: errors.array(), itemCategory: itemCategory, item: item });
+  }
+
   const itemId = req.params.id;
   await db.deleteItem(itemId);
   const categories = await db.getCategories();
   const items = await db.getItems();
-  res.render("index", { title: "All Items", description: "All Shiraz Farm items.", categories: categories, categoryId: "view", items: items });
+  res.redirect("/");
 }
 
 async function getItemsByText(req, res) {
@@ -61,6 +78,7 @@ async function getItemsByText(req, res) {
 
 module.exports = {
   validateItem,
+  validateAdminPassword,
   insertItem,
   updateItem,
   deleteItem,

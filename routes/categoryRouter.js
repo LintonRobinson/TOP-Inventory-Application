@@ -12,11 +12,10 @@ categoryRouter.get("/new", (req, res) => {
 categoryRouter.get("/edit/:id", async (req, res) => {
   const categoryId = req.params.id;
   const category = await db.getCategory(categoryId);
-  console.log("runnin");
   res.render("editCategory", { category: category, categoryId: categoryId });
 });
 
-categoryRouter.delete("/delete/:id", categoryController.validatedAdminPassword, categoryController.deleteCategory);
+categoryRouter.delete("/delete/:id", categoryController.validateAdminPassword, categoryController.deleteCategory);
 
 categoryRouter.get("/view", async (req, res) => {
   const categoryId = req.query.categoryToView;

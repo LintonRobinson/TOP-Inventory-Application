@@ -28,7 +28,7 @@ itemRouter.get("/edit/:id", async (req, res) => {
 
 itemRouter.post("/edit/:id", itemController.validateItem, itemController.updateItem);
 
-itemRouter.delete("/delete/:id", itemController.deleteItem);
+itemRouter.delete("/delete/:id", itemController.validateAdminPassword, itemController.deleteItem);
 
 itemRouter.get("/search", itemController.getItemsByText);
 
